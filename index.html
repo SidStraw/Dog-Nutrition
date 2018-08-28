@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>狗狗營養師～</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <style>
+        #banner {
+            height: 250px;
+            background-image: url('./banner.png');
+            background-position: center center;
+            background-size: cover;
+        }
+        
+        .container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner"></div>
+    <div id="app" class="container">
+        <form>
+            <!-- 狗狗體重 -->
+            <div class="row">
+                <div class="input-group input-group-lg mt-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">狗狗的體重：</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" v-model="kg">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">公斤（KG）</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 活動因子 -->
+            <div class="form-group mt-5 row">
+                <select class="form-control form-control-lg" v-model="selected">
+                    <option value="0">請選擇狗狗的活動因子</option>
+                    <option v-for="(type,i) in factor" :value="type.num">{{type.type}}</option>
+                </select>
+            </div>
+        </form>
+        <!-- 顯示需要熱量 -->
+        <div class="row text-center py-3 mt-5 alert alert-primary" role="alert">
+            <h3 class="col m-0 ">狗狗需要的熱量：</h3>
+            <div class="col h3 m-0 ">{{cal}}</div>
+        </div>
+        <!-- 顯示犬種 -->
+        <div class="row justify-content-center mt-5" v-if="dog">
+            <h3>你的狗狗是：</h3>
+            <div class="border rounded bg-primary h3 px-5 text-light">{{dog}}</div>
+        </div>
+        <!-- 顯示鮮食需求 -->
+        <ul class="list-group my-5" v-if="dog">
+            <li class="list-group-item active ">{{dog}}鮮食需要：</li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">純肉</div>
+                    <div class="col ">{{food[0]}}</div>
+                </div>
+            </li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">內臟</div>
+                    <div class="col ">{{food[1]}}</div>
+                </div>
+            </li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">鈣質添加物</div>
+                    <div class="col ">{{food[2]}}</div>
+                </div>
+            </li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">蔬果</div>
+                    <div class="col ">{{food[3]}}</div>
+                </div>
+            </li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">澱粉與豆類</div>
+                    <div class="col ">{{food[4]}}</div>
+                </div>
+            </li>
+            <li class="list-group-item ">
+                <div class="row text-center ">
+                    <div class="col ">脂肪</div>
+                    <div class="col ">{{food[5]}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
