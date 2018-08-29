@@ -20,33 +20,39 @@
         .container {
             max-width: 600px;
         }
+        
+        #footer {
+            position: absolute;
+            bottom: 0px;
+        }
     </style>
 </head>
 
 <body>
     <div id="banner"></div>
-    <div id="app" class="container">
-        <form>
-            <!-- 狗狗體重 -->
-            <div class="row">
-                <div class="input-group input-group-lg mt-5">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-lg">狗狗的體重：</span>
-                    </div>
-                    <input type="number" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" v-model="kg">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">公斤（KG）</span>
-                    </div>
+    <div id="app" class="container mb-5 pb-3">
+
+        <!-- 狗狗體重 -->
+        <div class="row">
+            <div class="input-group input-group-lg mt-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">狗狗的體重：</span>
                 </div>
+                <input type="number" :class="inputClass" aria-label="Large" aria-describedby="inputGroup-sizing-sm" v-model="kg" @change="check">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">公斤（KG）</span>
+                </div>
+                <div class="invalid-feedback text-center" v-if="">請輸入正確的數值喔</div>
             </div>
-            <!-- 活動因子 -->
-            <div class="form-group mt-5 row">
-                <select class="form-control form-control-lg" v-model="selected">
+        </div>
+        <!-- 活動因子 -->
+        <div class="form-group mt-5 row">
+            <select class="form-control form-control-lg" v-model="selected">
                     <option value="0">請選擇狗狗的活動因子</option>
                     <option v-for="(type,i) in factor" :value="type.num">{{type.type}}</option>
                 </select>
-            </div>
-        </form>
+        </div>
+
         <!-- 顯示需要熱量 -->
         <div class="row text-center py-3 mt-5 alert alert-primary" role="alert">
             <h3 class="col m-0 ">狗狗需要的熱量：</h3>
@@ -97,6 +103,9 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="bg-dark text-light text-center fixed-bottom">
+        <p class="my-1">Copyright © 2018.營養師萊恩 All rights reserved. - Designed by 半節吸管Half-Straw</p>
     </div>
     <script src="./app.js"></script>
 </body>

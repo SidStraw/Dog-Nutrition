@@ -1,8 +1,10 @@
 const vm = new Vue({
     el: "#app ",
     data: {
+        inputClass: 'form-control',
         kg: 0,
         selected: 0,
+        inputAlert: false,
         scale: [
             [0.38, 0.09, 0.07, 0.25, 0.2, 0.01], //小型犬
             [0.36, 0.08, 0.05, 0.25, 0.25, 0.01], //中型犬
@@ -46,8 +48,11 @@ const vm = new Vue({
             let calTemp = 0;
             if (isNaN(this.kg) || this.kg <= 0 || !this.selected) {
                 this.dog = '';
+                if (this.kg <= 0) this.kg;
                 return '請輸入狗狗資料'
             }
+            this.inputClass = 'form-control';
+            inputAlert = false;
             if (this.kg <= 10) {
                 calTemp = (this.kg * 30 + 70) * this.selected / 1.4;
                 this.dog = '小型犬'
@@ -74,5 +79,16 @@ const vm = new Vue({
             }
             return temp;
         }
-    }
+    },
+    methods: {
+        check() {
+            if (this.kg <= 0 || isNaN(this.kg)) {
+                this.inputClass = 'form-control is-invalid';
+                this.kg = 0;
+                inputAlert = true;
+                return;
+            }
+            inputAlert = false;
+        }
+    },
 })
