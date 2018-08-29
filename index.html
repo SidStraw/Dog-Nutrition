@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
     <title>狗狗營養師～</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -15,22 +16,25 @@
             background-image: url('./banner.png');
             background-position: center center;
             background-size: cover;
+            flex: 0 0 250px;
         }
         
         .container {
             max-width: 600px;
+            flex: 1;
         }
         
-        #footer {
-            position: absolute;
-            bottom: 0px;
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
     </style>
 </head>
 
 <body>
     <div id="banner"></div>
-    <div id="app" class="container mb-5 pb-3">
+    <div id="app" class="container pb-3">
 
         <!-- 狗狗體重 -->
         <div class="row">
@@ -104,9 +108,10 @@
             </li>
         </ul>
     </div>
-    <div class="bg-dark text-light text-center fixed-bottom">
+    <div class="bg-dark text-light text-center">
         <p class="my-1">Copyright © 2018.營養師萊恩 All rights reserved. - Designed by 半節吸管Half-Straw</p>
     </div>
+
     <script src="./app.js"></script>
 </body>
 
