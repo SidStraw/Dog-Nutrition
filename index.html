@@ -37,18 +37,20 @@
     <div id="app" class="container pb-3">
 
         <!-- 狗狗體重 -->
-        <div class="row">
-            <div class="input-group input-group-lg mt-5">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">狗狗的體重：</span>
+        <form @submit.prevent="onSubmit">
+            <div class="row">
+                <div class="input-group input-group-lg mt-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-lg">狗狗的體重：</span>
+                    </div>
+                    <input type="number" :class="inputClass" aria-label="Large" aria-describedby="inputGroup-sizing-sm" v-model="kg" @change="check">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">公斤（KG）</span>
+                    </div>
+                    <div class="invalid-feedback text-center" v-if="">請輸入正確的數值喔</div>
                 </div>
-                <input type="number" :class="inputClass" aria-label="Large" aria-describedby="inputGroup-sizing-sm" v-model="kg" @change="check">
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">公斤（KG）</span>
-                </div>
-                <div class="invalid-feedback text-center" v-if="">請輸入正確的數值喔</div>
             </div>
-        </div>
+        </form>
         <!-- 活動因子 -->
         <div class="form-group mt-5 row">
             <select class="form-control form-control-lg" v-model="selected">

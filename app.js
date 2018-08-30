@@ -11,10 +11,10 @@ const vm = new Vue({
             [0.28, 0.06, 0.05, 0.35, 0.25, 0.01]
         ], //大型犬
         factor: [{
-            type: '0~4M',
+            type: '幼犬0~4個月',
             num: 3
         }, {
-            type: '4~12M',
+            type: '幼犬4~12個月',
             num: 2
         }, {
             type: '一歲以上已結紮',
@@ -53,7 +53,7 @@ const vm = new Vue({
             }
             this.inputClass = 'form-control';
             inputAlert = false;
-            if (this.kg <= 10) {
+            if (this.kg <= 10 && this.kg > 0) {
                 calTemp = (this.kg * 30 + 70) * this.selected / 1.4;
                 this.dog = '小型犬'
             } else if (this.kg <= 20) {
@@ -62,7 +62,7 @@ const vm = new Vue({
             } else if (this.kg > 20) {
                 calTemp = (this.kg * 30 + 70) * this.selected / 1.6;
                 this.dog = '大型犬'
-            }
+            } else this.kg = '';
             return Math.round(calTemp, 10);
         },
         food() {
@@ -88,6 +88,7 @@ const vm = new Vue({
                 inputAlert = true;
                 return;
             }
+            this.inputClass = 'form-control';
             inputAlert = false;
         }
     },
